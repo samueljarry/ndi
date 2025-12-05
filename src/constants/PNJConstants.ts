@@ -58,9 +58,16 @@ export const PNJDatas = {
   FDP_4: {
     house: "Maison du Stratège",
     viewId: ViewId.STRATEGE_GAME,
+    character: "images/character/chef.png",
   },
   FDP_3: {
     house: "Maison du Jardinier",
     viewId: ViewId.JARDINIER_GAME,
+    character: "images/character/jardinieur.png",
+    dialogs: [
+      "images/dialogsvg/jardinier/0.svg",
+      "images/dialogsvg/jardinier/1.svg",
+      "images/dialogsvg/jardinier/2.svg",
+    ],
   },
 } as const satisfies Record<PNJId, PNJData>;
