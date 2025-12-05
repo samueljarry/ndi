@@ -1,5 +1,7 @@
 import { Object3DId } from "@/constants/Object3DId";
 import { AssetsId } from "@/core/commons/constants/AssetsId";
+import { ViewId } from "@/core/commons/constants/views/ViewId";
+import { ViewsManager } from "@/core/commons/managers/ViewsManager";
 import { ExtendedObject3D } from "@/core/three/components/ExtendedObject3D";
 import type { GLB } from "@/core/three/loaders/GLBLoader";
 import { ThreeAssetsManager } from "@/core/three/managers/ThreeAssetsManager";
@@ -99,6 +101,7 @@ export class Map3D extends ExtendedObject3D {
 
   private _onRobotClick = () => {
     console.log("CLICK ROBOT");
+    ViewsManager.Show(ViewId.ROBOT_A_I);
   };
 
   private _onSnakeClick = () => {
