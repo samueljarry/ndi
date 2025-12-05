@@ -2,6 +2,11 @@
 
 html, body {
   font-size: 10px;
+  overscroll-behavior: none;
+}
+
+.tp-dfwv {
+  z-index: 10000;
 }
 
 @theme { 

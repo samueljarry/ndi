@@ -1,5 +1,5 @@
-import path from 'path';
 import tailwindcss from '@tailwindcss/vite';
+import path from 'path';
 import tsConfigPaths from 'vite-tsconfig-paths';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
