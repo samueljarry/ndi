@@ -9,6 +9,12 @@ export default defineNuxtConfig({
   css: ["~/assets/styles/main.css"],
   compatibilityDate: "2025-05-15",
 
+  runtimeConfig: {
+    public: {
+      chatApiUrl: process.env.CHAT_API_URL || 'http://localhost:3001'
+    }
+  },
+
   vite: {
     plugins: [
       tailwindcss(),
