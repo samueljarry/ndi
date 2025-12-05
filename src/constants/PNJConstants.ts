@@ -63,7 +63,7 @@ export const PNJDatas = {
   FDP_3: {
     house: "Maison du Jardinier",
     viewId: ViewId.JARDINIER_GAME,
-    character: "images/character/jardinier.png",
+    character: "images/character/jardinieur.png",
     dialogs: [
       "images/dialogsvg/jardinier/0.svg",
       "images/dialogsvg/jardinier/1.svg",
