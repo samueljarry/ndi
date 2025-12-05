@@ -7,7 +7,7 @@ html, body {
 
 /* Curseur personnalisé sur tout le site, y compris états pointer */
 * {
-  cursor: url('/cursor.svg') 0 0, auto;
+  /* cursor: url('/cursor.svg') 0 0, auto; */
 }
 
 button,
@@ -22,7 +22,7 @@ select,
 option,
 textarea,
 label {
-  cursor: url('/cursor.svg') 0 0, auto;
+  /* cursor: url('/cursor.svg') 0 0, auto; */
 }
 
 .tp-dfwv {
