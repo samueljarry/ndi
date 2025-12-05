@@ -35,19 +35,31 @@ export const PNJDatas = {
     ],
     character: "images/character/mecano.png",
   },
-  FDP_2: {
+  FDP_5: {
     house: "Maison de la Scientifique",
     viewId: ViewId.SCIENTIFIQUE_GAME,
+    character: "images/character/scientifique.png",
+    dialogs: [
+      "images/dialogsvg/scientifique/0.svg",
+      "images/dialogsvg/scientifique/1.svg",
+      "images/dialogsvg/scientifique/2.svg",
+    ],
   },
-  FDP_3: {
+  FDP_2: {
     house: "Maison de la Forgeronne",
     viewId: ViewId.FORGERON_GAME,
+    character: "images/character/forgeronne.png",
+    dialogs: [
+      "images/dialogsvg/forgeronne/0.svg",
+      "images/dialogsvg/forgeronne/1.svg",
+      "images/dialogsvg/forgeronne/2.svg",
+    ],
   },
   FDP_4: {
     house: "Maison du Stratège",
-    viewId: ViewId.STRATEGE_GAME
+    viewId: ViewId.STRATEGE_GAME,
   },
-  FDP_5: {
+  FDP_3: {
     house: "Maison du Jardinier",
     viewId: ViewId.JARDINIER_GAME,
   },

@@ -1,9 +1,10 @@
 <script setup lang="ts">
-  
+
+
 </script>
 
 <template>
-  <View class="flex items-center justify-center">
-    <p>JEU DU MECANO</p>
+  <View>
+    <Mecano />
   </View>
 </template>

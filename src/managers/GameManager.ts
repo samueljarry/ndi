@@ -26,6 +26,7 @@ export class GameManager {
   public static Hide() {
     this._Camera.addListeners();
     ViewsManager.Hide(ViewId.HOUSE_DIALOG);
+    console.log(this._CurrentData.viewId)
     ViewsManager.Hide(this._CurrentData.viewId);
 
     this.OnHide.execute();
