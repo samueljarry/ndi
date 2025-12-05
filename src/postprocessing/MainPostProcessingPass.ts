@@ -26,8 +26,8 @@ export class MainPostProcessingPass extends ExtendedEffectPass {
     const tiltShiftEffect = new TiltShiftEffect({
       blendFunction: BlendFunction.NORMAL,
       offset: 0.09,
-      rotation: 3.76,
-      focusArea: 0.85,
+      rotation: 3.5,
+      focusArea: 0.9,
       feather: 1,
       bias: 0,
       resolutionScale: 1,

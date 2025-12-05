@@ -14,6 +14,8 @@ export class Map3D extends ExtendedObject3D {
   private _scene: Scene;
   private _hitboxes = new Set<Mesh>();
   private _raycaster: RaycastHandler;
+  private _snakeRaycaster: RaycastHandler;
+  private _robotRaycaster: RaycastHandler;
 
   private readonly HOUSES_ID = [
     Object3DId.HOUSE_1,
@@ -32,6 +34,8 @@ export class Map3D extends ExtendedObject3D {
     this.add(this._scene);
     this.name = "🏠 MAP 3D";
     this._raycaster = new RaycastHandler();
+    this._snakeRaycaster = new RaycastHandler();
+    this._robotRaycaster = new RaycastHandler();
   }
 
   public override init(): void {
@@ -68,16 +72,49 @@ export class Map3D extends ExtendedObject3D {
     this._raycaster.onMouseEnter.add(this._onMouseEnter);
     this._raycaster.onMouseLeave.add(this._onMouseLeave);
 
+    const hitboxRobot = Object3DProxy.GetObject3D(Object3DId.ROBOT_HITBOX);
+    hitboxRobot.visible = false;
+
+    this._robotRaycaster.add(
+      hitboxRobot
+    );
+    this._robotRaycaster.start();
+    this._robotRaycaster.onClick.add(this._onRobotClick);
+    this._robotRaycaster.onMouseEnter.add(this._onMouseEnter);
+    this._robotRaycaster.onMouseLeave.add(this._onMouseLeave);
+    const snakeHitbox = Object3DProxy.GetObject3D(Object3DId.SNAKE_HITBOX);
+    snakeHitbox.visible = false;
+
+    this._snakeRaycaster.add(
+      snakeHitbox
+    );
+    this._snakeRaycaster.start();
+    this._snakeRaycaster.onClick.add(this._onSnakeClick);
+    this._snakeRaycaster.onMouseEnter.add(this._onMouseEnter);
+    this._snakeRaycaster.onMouseLeave.add(this._onMouseLeave);
+
     GameManager.OnShow.add(this._handleGameStart);
     GameManager.OnHide.add(this._handleGameEnd);
   }
 
+  private _onRobotClick = () => {
+    console.log("CLICK ROBOT");
+  };
+
+  private _onSnakeClick = () => {
+    console.log("CLICK Snake");
+  };
+
   private _handleGameStart = () => {
     this._raycaster.stop();
+    this._snakeRaycaster.stop();
+    this._robotRaycaster.stop();
   };
 
   private _handleGameEnd = () => {
     this._raycaster.start();
+    this._snakeRaycaster.start();
+    this._robotRaycaster.start();
   };
 
   private _onMouseEnter = (intersection: Intersection) => {

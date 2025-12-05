@@ -38,7 +38,7 @@ export class GlobalInitCommand extends InitCommand {
   }
 
   public override async initThree() {
-    ThreeAssetsManager.AddGlb(AssetsId.GLB_MAP, 'models/map2.glb');
+    ThreeAssetsManager.AddGlb(AssetsId.GLB_MAP, 'models/map3.glb');
     CamerasManager.Add(MapCameraController);
 
     PostProcessingProxy.AddPass(PassId.MAIN, new MainPostProcessingPass());
