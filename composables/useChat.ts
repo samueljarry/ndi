@@ -5,7 +5,7 @@ export function useChat() {
   const loading = ref(false)
 
   const config = useRuntimeConfig()
-  const base = config.public?.chatApiUrl || 'http://localhost:3001'
+  const base = config.public?.chatApiUrl || 'https://amel2024test.alwaysdata.net'
 
   // génère un id de conversation (persisté en session) — éviter l'accès à sessionStorage côté SSR
   let conversationId: string | null = null
@@ -19,24 +19,29 @@ export function useChat() {
 
   async function sendMessage(text: string) {
     if (!text) return
+    console.log('[useChat] sendMessage called with:', text)
     messages.value.push({ role: 'user', content: text })
     loading.value = true
     try {
       // s'assurer d'avoir une conversationId côté client
       if (!conversationId) {
         conversationId = (typeof crypto !== 'undefined' && (crypto as any).randomUUID) ? (crypto as any).randomUUID() : String(Date.now())
+        console.log('[useChat] Generated new conversationId:', conversationId)
         if (typeof window !== 'undefined' && window.sessionStorage) sessionStorage.setItem('conversationId', conversationId as string)
       }
       // conversationId est maintenant garanti non-null après les vérifications ci-dessus
       const convId = conversationId as string
+      console.log('[useChat] Sending to API:', base + '/chat')
       const res = await fetch(`${base}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: text, conversationId: convId })
       })
 
+      console.log('[useChat] API response status:', res.status)
       if (!res.ok) throw new Error('Erreur réseau')
       const data = await res.json()
+      console.log('[useChat] API response data:', data)
       // si le serveur renvoie un conversationId, on le sauvegarde
       if (data?.conversationId) {
         conversationId = data.conversationId as string
@@ -44,14 +49,17 @@ export function useChat() {
       }
       // retourner la réponse au caller pour qu'il gère l'affichage (effet d'écriture)
       if (data?.reply) {
+        console.log('[useChat] Returning reply:', data.reply)
         return data.reply
       } else {
+        console.log('[useChat] No reply in response')
         return 'Erreur: pas de réponse'
       }
     } catch (err) {
-      console.error(err)
+      console.error('[useChat] Error in sendMessage:', err)
       return 'Erreur: impossible de contacter l\'API'
     } finally {
+      console.log('[useChat] Setting loading to false')
       loading.value = false
     }
   }

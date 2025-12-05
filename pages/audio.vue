@@ -1,12 +1,20 @@
 <template>
 	<div class="page-container">
-		<h1>Chat Audio avec Amel</h1>
-		<AudioChat />
+		<h1>Chat Audio avec BabouChat</h1>
+		<AudioChat v-if="showChat" @close="closeChat" />
+		<button v-else @click="showChat = true" class="reopen-btn">Rouvrir le chat</button>
 	</div>
 </template>
 
 <script setup lang="ts">
-import AudioChat from '~/components/AudioChat.vue'
+import { ref } from 'vue';
+import AudioChat from '~/components/AudioChat.vue';
+
+const showChat = ref(true);
+
+function closeChat() {
+	showChat.value = false;
+}
 </script>
 
 <style scoped>

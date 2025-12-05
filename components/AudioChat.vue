@@ -1,39 +1,38 @@
 <template>
 	<div class="audio-chat-root">
-		<transition-group
-			name="fade"
-			tag="div"
-			ref="scrollRef"
-			class="messages"
-		>
-			<div
-				v-for="(m, i) in visibleMessages"
-				:key="m.role + '-' + i"
-				:class="['message', m.role]"
+		<div ref="scrollRef" class="messages">
+			<transition-group
+				name="fade"
+				tag="div"
 			>
-				<div class="role">{{ m.role === 'user' ? 'Vous' : 'Amel' }}</div>
-				<div class="content">{{ m.content }}</div>
-				<button
-					v-if="m.role === 'assistant'"
-					@click="playAudio(m.content)"
-					class="play-btn"
-					:disabled="playingId === (m.role + '-' + i)"
+				<div
+					v-for="(m, i) in visibleMessages"
+					:key="m.role + '-' + i"
+					:class="['message', m.role]"
 				>
-					{{ playingId === (m.role + '-' + i) ? '🔊 Lecture...' : '🔉 Écouter' }}
-				</button>
-			</div>
-		</transition-group>
+					<div class="role">{{ m.role === 'user' ? 'Vous' : 'Amel' }}</div>
+					<div class="content">{{ m.content }}</div>
+					<!-- <button
+						v-if="m.role === 'assistant'"
+						@click="playAudio(m.content)"
+						class="play-btn"
+						:disabled="playingId === (m.role + '-' + i)"
+					>
+						{{ playingId === (m.role + '-' + i) ? '🔊 Lecture...' : '🔉 Écouter' }}
+					</button> -->
+				</div>
+			</transition-group>
+		</div>
 
 		<form @submit.prevent="onSubmit" class="composer">
 			<input
+				ref="inputElement"
 				v-model="input"
 				@focus="skipTyping"
 				@click="skipTyping"
 				:disabled="loading"
 				placeholder="Écrire un message..."
 			/>
-			<button type="submit" :disabled="loading || !input">Envoyer</button>
-			<!-- <button type="button" @click="newChat" class="new-chat-btn">Nouveau chat</button> -->
 		</form>
 		<div v-if="loading" class="loading">En cours...</div>
 	</div>
@@ -46,6 +45,7 @@ import { useChat } from '~/composables/useChat'
 const { messages, loading, sendMessage, newChat } = useChat()
 
 const input = ref('')
+const inputElement = ref<HTMLInputElement | null>(null)
 const scrollRef = ref<HTMLElement | null>(null)
 const playingId = ref<string | null>(null)
 const visibleMessages = computed(() => messages.value.filter(m => m.role !== 'system'))
@@ -55,10 +55,14 @@ let typingTimer: ReturnType<typeof setInterval> | null = null
 async function onSubmit() {
 	const t = input.value.trim()
 	if (!t) return
-	const sendPromise = sendMessage(t)
-	await scrollToBottom()
-	input.value = ''
-	const reply = await sendPromise
+	const sendPromise = sendMessage(t);
+	await scrollToBottom();
+	input.value = '';
+	// Re-focus input après envoi
+	if (inputElement.value) {
+		inputElement.value.focus();
+	}
+	const reply = await sendPromise;
 
 	if (typeof reply === 'string') {
 		if (typingTimer) {
@@ -105,7 +109,7 @@ async function playAudio(text: string) {
 	try {
 		playingId.value = text.slice(0, 20) // id temporaire
 		const config = useRuntimeConfig()
-		const base = config.public?.chatApiUrl || 'http://localhost:3001'
+		const base = config.public?.chatApiUrl || 'https://amel2024test.alwaysdata.net'
 		
 		const response = await fetch(`${base}/tts`, {
 			method: 'POST',
@@ -195,7 +199,7 @@ function skipTyping() {
 			typingTimer = null
 			const convId = sessionStorage.getItem('conversationId')
 			if (convId) {
-				fetch(`${useRuntimeConfig().public.chatApiUrl || 'http://localhost:3001'}/chat/${convId}`)
+				fetch(`${useRuntimeConfig().public.chatApiUrl || 'https://amel2024test.alwaysdata.net'}/chat/${convId}`)
 					.then(r => r.json())
 					.then(data => {
 						if (data?.history && Array.isArray(data.history)) {
@@ -208,11 +212,21 @@ function skipTyping() {
 }
 
 async function scrollToBottom() {
-	await nextTick()
+	await nextTick();
+	// Attendre que les animations de transition se terminent
+	await new Promise((resolve) => {
+		setTimeout(resolve, 100);
+	});
 	if (scrollRef.value) {
 		try {
-			scrollRef.value.scrollTop = scrollRef.value.scrollHeight
-		} catch (e) {
+			// Utiliser requestAnimationFrame pour garantir le scroll après le rendu
+			requestAnimationFrame(() => {
+				if (scrollRef.value) {
+					scrollRef.value.scrollTop = scrollRef.value.scrollHeight;
+				}
+			});
+		}
+		catch {
 			// ignore
 		}
 	}
@@ -220,34 +234,89 @@ async function scrollToBottom() {
 
 onBeforeUnmount(() => {
 	if (typingTimer) {
-		clearInterval(typingTimer)
-		typingTimer = null
+		clearInterval(typingTimer);
+		typingTimer = null;
 	}
-})
+});
 
 watch(messages, () => {
-	// scroll to bottom chaque fois qu'un message est ajouté/modifié
-	scrollToBottom()
-}, { deep: true })
+	// scroll to bottom avec un délai pour s'assurer que le DOM est mis à jour
+	nextTick().then(() => {
+		if (scrollRef.value) {
+			scrollRef.value.scrollTop = scrollRef.value.scrollHeight;
+		}
+	});
+	// Deuxième scroll plus agressif après les animations
+	setTimeout(() => {
+		requestAnimationFrame(() => {
+			if (scrollRef.value) {
+				scrollRef.value.scrollTop = scrollRef.value.scrollHeight;
+			}
+		});
+	}, 100);
+}, { deep: true });
 
 onMounted(() => {
-	if (scrollRef.value) scrollRef.value.scrollTop = scrollRef.value.scrollHeight
-})
+	// Scroll initial immédiat
+	if (scrollRef.value) {
+		scrollRef.value.scrollTop = scrollRef.value.scrollHeight;
+	}
+
+	// Scroll après le render
+	nextTick().then(() => {
+		if (scrollRef.value) {
+			scrollRef.value.scrollTop = scrollRef.value.scrollHeight;
+		}
+	});
+
+	// Scroll agressif pour l'historique
+	setTimeout(() => {
+		if (scrollRef.value) {
+			scrollRef.value.scrollTop = scrollRef.value.scrollHeight;
+		}
+		requestAnimationFrame(() => {
+			if (scrollRef.value) {
+				scrollRef.value.scrollTop = scrollRef.value.scrollHeight;
+			}
+		});
+	}, 200);
+});
 </script>
 
 <style scoped>
 .audio-chat-root{
-	border:1px solid var(--color-border,#ddd);
-	border-radius:8px;
+	border: 5px solid #000000;
+	border-radius: 0px;
 	padding:12px;
 	position:relative;
 	z-index:99999;
-	background: rgba(255,255,255,0.95);
+	max-width: 500px;
+	background: #FFF1E9;
 }
-.messages{ max-height:60vh; overflow:auto; padding:8px; display:flex; flex-direction:column; gap:8px; }
+.messages{ max-height:60vh; overflow:auto; padding:8px 0; display:flex; flex-direction:column; gap:8px; }
+.messages > div {
+	display:flex;
+	flex-direction:column;
+	gap:8px;
+	width: 100%;
+}
 .message{ padding:8px 10px; border-radius:6px; max-width:80%; }
-.message.user{ align-self:flex-end; background:#dcf8c6; }
-.message.assistant{ align-self:flex-start; background:#f1f0f0; }
+.message.user{
+	align-self:flex-end;
+	background:transparent;
+	text-align: right;
+}
+.message.user .role {
+	text-align: right;
+}
+.message.assistant{
+	align-self:flex-start;
+	background: #000000;
+	color: #FFFFFF;
+}
+.message.assistant .role {
+	color: #FFFFFF;
+}
 .message.system{ align-self:center; background:#fff1c6; }
 .role{ font-size:11px; opacity:0.7; margin-bottom:4px; }
 .content{ margin-bottom:6px; }

@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <h1>Chat avec Amel Chabah</h1>
+    <h1>Chat avec BabouChat</h1>
     <Chat />
   </div>
 </template>

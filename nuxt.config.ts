@@ -11,7 +11,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      chatApiUrl: process.env.CHAT_API_URL || 'http://localhost:3001'
+      chatApiUrl: process.env.CHAT_API_URL || 'https://amel2024test.alwaysdata.net'
     }
   },
 
