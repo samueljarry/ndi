@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ViewsManager } from '@/core/commons/managers/ViewsManager';
-import { HouseDialogManager } from '@/managers/HouseDialogManager';
+import { GameManager } from '@/managers/GameManager';
 import { onMounted, onUnmounted } from 'vue';
 
-const currentDatas = ref(HouseDialogManager.CurrentData);
+const currentDatas = ref(GameManager.CurrentData);
 const currentDialogIndex = ref(0);
 
 const nextDialog = () => {
@@ -25,6 +25,12 @@ const handleKeyPress = (event: KeyboardEvent) => {
 };
 
 onMounted(() => {
+  // Si pas de dialogues ou tableau vide, lance directement le jeu
+  if (!currentDatas.value.dialogs || currentDatas.value.dialogs.length === 0) {
+    onDialogComplete();
+    return;
+  }
+  
   window.addEventListener('keydown', handleKeyPress);
 });
 
@@ -34,7 +40,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <View class="cursor-pointer">
+  <View class="cursor-pointer" v-if="currentDatas.dialogs && currentDatas.dialogs.length > 0">
     <div class="w-full h-fit absolute bottom-0 left-0 flex justify-center items-end" @click="nextDialog">
       <div class="w-1/5 z-10 translate-x-1/3 h-fit">
         <img 
