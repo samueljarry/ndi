@@ -5,7 +5,7 @@
     <div style="display: flex;">
       <div class="instr-class">
         <img 
-          src="/images/jardinier/jardinx.svg" 
+          src="/images/jardinier/Jardinx.svg" 
           alt="Image"
         />
       </div>
@@ -116,7 +116,7 @@
 
 <script setup lang="ts">
 import { GameManager } from '@/managers/GameManager';
-import { ref, computed } from 'vue';
+import { computed, ref } from 'vue';
 
 const questions = [
   { text: "Je fais attention à l'impact environnemental des produits que j'utilise au quotidien.", category: "perception" },

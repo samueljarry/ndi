@@ -193,7 +193,7 @@ onMounted(() => {
 <style scoped>
 @font-face {
   font-family: 'Gensco';
-  src: url('@/assets/gensco-webfont/GENSCO.woff') format('woff');
+  src: url('/gensco-webfont/GENSCO.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
