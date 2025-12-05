@@ -461,7 +461,7 @@ onMounted(async () => {
     
     <!-- Écran de démarrage -->
     <div v-if="showStartScreen" class="start-screen">
-      <div class="start-bg" style="background-image: url('/bgchambre.png')"></div>
+      <div class="start-bg" style="background-image: url('/bgscientifique.png')"></div>
       <img src="/persolinux.png" alt="Personnage" class="start-character" />
       <div class="start-info">
         <h1>WinDOS_XPire</h1>
@@ -603,7 +603,7 @@ onMounted(async () => {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/bgchambre.png');
+  background-image: url('/bgscientifique.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

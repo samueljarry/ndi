@@ -58,20 +58,14 @@
       <div class="modal-content">
         <h2>{{ modalTitle }}</h2>
         <p v-html="modalMessage"></p>
-        <button v-if="isGameComplete" @click="handleGameComplete">
-          Terminer
-        </button>
-        <button v-else @click="closeModal">
-          Continuer
-        </button>
+        <button @click="closeModal">Continuer</button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { GameManager } from '@/managers/GameManager'
-import { onMounted, ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const characterImg = new URL('../public/persostratege.png', import.meta.url).href
 const newspaperImg = new URL('../public/persojalon.png', import.meta.url).href
@@ -105,7 +99,6 @@ const totalPhrases = 3
 const showModal = ref(false)
 const modalTitle = ref('')
 const modalMessage = ref('')
-const isGameComplete = ref(false)
 
 const jalonNames = ['', 'Mobilisation', 'Expérimentation', 'Intégration']
 const jalonColors = ['', '#4a7c59', '#8b1010', '#23429d']
@@ -131,18 +124,16 @@ function displayNewPhrase() {
 function openModal(title: string, message: string) {
   modalTitle.value = title
   modalMessage.value = message
-  isGameComplete.value = completedPhrases.value >= totalPhrases
   showModal.value = true
 }
 
 function closeModal() {
   showModal.value = false
-  displayNewPhrase()
-}
-
-function handleGameComplete() {
-  GameManager.Hide()
-  // resetGame()
+  if (completedPhrases.value >= totalPhrases) {
+    resetGame()
+  } else {
+    displayNewPhrase()
+  }
 }
 
 function checkAnswer(selectedJalon: number) {
@@ -182,7 +173,6 @@ function resetGame() {
   currentPhrase.value = null
   usedPhrases.value = []
   completedPhrases.value = 0
-  isGameComplete.value = false
   displayNewPhrase()
 }
 
@@ -194,7 +184,7 @@ onMounted(() => {
 <style scoped>
 @font-face {
   font-family: 'Gensco';
-  src: url('/gensco-webfont/GENSCO.woff') format('woff');
+  src: url('@/assets/gensco-webfont/GENSCO.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
