@@ -1,4 +1,10 @@
 <template>
+	<img 
+      v-if="showEnd"
+      src="/images/forge/EndForge.png" 
+      alt="Background" 
+      style="position: fixed; width: 100vw; height: auto; top: -17%; left: 0; z-index: 999;"
+    />
 	<div class="memory-game-container">
         <div class="game-left">
             <img
@@ -88,7 +94,7 @@
 					class="play-again-btn"
 					@click="resetGame"
 				>
-					Rejouer
+					Quitter
 				</button>
 			</div>
 		</div>
@@ -292,8 +298,15 @@ const checkMatch = () => {
 	}
 };
 
+const showEnd = ref(false);
+
 const resetGame = () => {
-	GameManager.Hide()
+    showEnd.value = true
+    setTimeout(() => {
+      showEnd.value = false
+      GameManager.Hide();
+    }, 4000);
+
 };
 
 const closeAppModal = () => {

@@ -223,6 +223,9 @@ function createPopup() {
   }, 8000)
 }
 
+const showEnd = ref(false)
+
+
 function unlockSuccess(message: string, explosionDiv: HTMLDivElement, successDiv: HTMLDivElement) {
   cursedMode.value = false
   const input = document.getElementById('cursed-input') as HTMLInputElement
@@ -295,11 +298,12 @@ function unlockSuccess(message: string, explosionDiv: HTMLDivElement, successDiv
     if (redemarrerBtn) {
       redemarrerBtn.addEventListener('click', handleTerminer)
     }
-    
-    // Auto-hide après 4 secondes
+
+    showEnd.value = true
     setTimeout(() => {
-      GameManager.Hide()
-    }, 4000)
+      showEnd.value = false
+      GameManager.Hide();
+    }, 4000);
     
     createConfetti()
   }, 1000)
@@ -445,7 +449,11 @@ function initializeGameLogic() {
 }
 
 function handleTerminer() {
-  GameManager.Hide()
+    showEnd.value = true
+    setTimeout(() => {
+      showEnd.value = false
+      GameManager.Hide();
+    }, 4000);
 }
 
 onMounted(async () => {
@@ -455,6 +463,14 @@ onMounted(async () => {
 </script>
 
 <template>
+
+  <img 
+      v-if="showEnd"
+      src="/images/scien/EndScien.png" 
+      alt="Background" 
+      style="position: fixed; width: 100vw; height: auto; top: -17%; left: 0; z-index: 35;"
+    />
+
   <div class="scientifique-game-wrapper">
     <!-- Overlay noir -->
     <div v-if="showStartScreen || showGame" class="game-overlay"></div>

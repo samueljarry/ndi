@@ -59,6 +59,14 @@ export const PNJDatas = {
     house: "Maison du Stratège",
     viewId: ViewId.STRATEGE_GAME,
     character: "images/character/chef.png",
+    dialogs: [
+      "images/dialogsvg/chef/0(1).svg",
+      "images/dialogsvg/chef/1(1).svg",
+      "images/dialogsvg/chef/2(1).svg",
+      "images/dialogsvg/chef/3.svg",
+      "images/dialogsvg/chef/4(1).png",
+      "images/dialogsvg/chef/5.svg",
+    ],
   },
   FDP_3: {
     house: "Maison du Jardinier",

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { GameManager } from '@/managers/GameManager'
+import { set } from 'animejs'
 
 
 interface Square {
@@ -225,6 +226,9 @@ const startDrag = (square: Square) => {
   draggedSquare.value = square
 }
 
+const showEnd = ref(false)
+
+
 const startDragPlaced = (square: Square, event: DragEvent) => {
   draggedSquare.value = square
   event.stopPropagation()
@@ -374,7 +378,11 @@ const isGameComplete = () => {
 }
 
 const onGameComplete = () => {
-  GameManager.Hide();
+  showEnd.value = true
+  setTimeout(() => {
+    showEnd.value = false
+    GameManager.Hide();
+  }, 3000);
 }
 
 
@@ -398,6 +406,13 @@ const onGameComplete = () => {
         />
       </div>
     </div>
+
+    <img 
+      v-if="showEnd"
+      src="/images/mecano/EndMecano.png" 
+      alt="Background" 
+      style="position: fixed; width: 100vw; height: auto; top: -17%; left: 0; z-index: 35;"
+    />
 
 
     <div class="zones-container">

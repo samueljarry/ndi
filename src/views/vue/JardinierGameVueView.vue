@@ -1,5 +1,12 @@
 <template>
   <View>
+    <img 
+      v-if="showEnd"
+      src="/images/jardinier/EndJardin.png" 
+      alt="Background" 
+      style="position: fixed; width: 100vw; height: auto; top: -17%; left: 0; z-index: 35;"
+    />
+
     <div class="quiz-container">
 
     <div style="display: flex;">
@@ -101,7 +108,7 @@
               <p class="result-score">Score total : {{ totalScore }}</p>
             </div>
 
-            <button class="restart-btn" @click="GameManager.Hide()">
+            <button class="restart-btn" @click="onGameComplete()">
               Retour au village
             </button>
           </div>
@@ -117,6 +124,17 @@
 <script setup lang="ts">
 import { GameManager } from '@/managers/GameManager';
 import { ref, computed } from 'vue';
+
+const showEnd = ref(false)
+
+
+const onGameComplete = () => {
+  showEnd.value = true
+  setTimeout(() => {
+    showEnd.value = false
+    GameManager.Hide();
+  }, 3000);
+}
 
 const questions = [
   { text: "Je fais attention à l'impact environnemental des produits que j'utilise au quotidien.", category: "perception" },
