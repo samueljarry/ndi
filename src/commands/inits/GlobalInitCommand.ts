@@ -21,6 +21,7 @@ import HouseDisplayVueView from '@/views/vue/HouseDisplayVueView.vue'
 import JardinierGameVueView from '@/views/vue/JardinierGameVueView.vue'
 import MecanoGameVueView from '@/views/vue/MecanoGameVueView.vue'
 import ScientifiqueGameVueView from '@/views/vue/ScientifiqueGameVueView.vue'
+import SnakeVueView from '@/views/vue/SnakeVueView.vue'
 import StrategeGameVueView from '@/views/vue/StrategeGameVueView.vue'
 import { AnalyseGLTFCommand } from '../AnalyseGLTFCommand'
 
@@ -64,6 +65,7 @@ export class GlobalInitCommand extends InitCommand {
     ViewsManager.CreateVueView(ViewId.STRATEGE_GAME, StrategeGameVueView, ViewLayer.GAME);
     ViewsManager.CreateVueView(ViewId.JARDINIER_GAME, JardinierGameVueView, ViewLayer.GAME);
     ViewsManager.CreateVueView(ViewId.MECANO_GAME, MecanoGameVueView, ViewLayer.GAME);
+    ViewsManager.CreateVueView(ViewId.SNAKE, SnakeVueView, ViewLayer.GAME);
   }
   
   public override initScenes() {

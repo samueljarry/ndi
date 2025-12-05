@@ -35,11 +35,12 @@ export class DemoScene extends ThreeScene {
     this._views.add(ViewId.HOUSE_DISPLAY);
     this._linkedViews.add(ViewId.HOUSE_DIALOG);
     
-    this._linkedViews.add(ViewId.FORGERON_GAME)
-    this._linkedViews.add(ViewId.SCIENTIFIQUE_GAME)
-    this._linkedViews.add(ViewId.STRATEGE_GAME)
-    this._linkedViews.add(ViewId.JARDINIER_GAME)
-    this._linkedViews.add(ViewId.MECANO_GAME)
+    this._linkedViews.add(ViewId.FORGERON_GAME);
+    this._linkedViews.add(ViewId.SCIENTIFIQUE_GAME);
+    this._linkedViews.add(ViewId.STRATEGE_GAME);
+    this._linkedViews.add(ViewId.JARDINIER_GAME);
+    this._linkedViews.add(ViewId.MECANO_GAME);
+    this._linkedViews.add(ViewId.SNAKE);
   }
 
   public override init(): void {
