@@ -22,7 +22,9 @@ onMounted(() => {
   camera.value.onFocusedHouseChange.add(updateName);
   name.value = PNJDatas[camera.value.currentHousePNJ].house;
 
-  GameManager.OnShow.add(() => ctaVisible.value = false);
+  GameManager.OnShow.add(() => {
+    ctaVisible.value = false
+  });
   GameManager.OnHide.add(() => ctaVisible.value = true);
   
   onUnmounted(() => {
