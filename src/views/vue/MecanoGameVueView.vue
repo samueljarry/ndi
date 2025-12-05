@@ -5,6 +5,6 @@
 
 <template>
   <View>
-    <Mecano />
+    <Mecano  />
   </View>
 </template>

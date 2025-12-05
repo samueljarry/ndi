@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { GameManager } from '@/managers/GameManager'
 
-defineProps<{ msg: string }>()
 
 interface Square {
   id: number
@@ -374,7 +374,7 @@ const isGameComplete = () => {
 }
 
 const onGameComplete = () => {
-  alert("Félicitations ! Vous avez complété le jeu.")
+  GameManager.Hide();
 }
 
 
@@ -599,7 +599,7 @@ const onGameComplete = () => {
 }
 
 .reser-class img {
-  width: 44px;
+  width: 44.2px;
   height: auto;
   display: block;
 }
@@ -709,8 +709,8 @@ const onGameComplete = () => {
 }
 
 .drop-zone {
-  width: 300px;
-  height: 300px;
+  width: 310px;
+  height: 310px;
   border: 5px solid #ffffff;
   position: relative;
   background: #1E1E1E;
