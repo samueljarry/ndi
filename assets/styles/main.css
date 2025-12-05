@@ -5,6 +5,10 @@ html, body {
   overscroll-behavior: none;
 }
 
+* {
+  user-select: none;
+}
+
 /* Curseur personnalisé sur tout le site, y compris états pointer */
 * {
   /* cursor: url('/cursor.svg') 0 0, auto; */
