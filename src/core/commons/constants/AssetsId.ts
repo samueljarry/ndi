@@ -17,6 +17,7 @@ export enum AssetsId {
   TEXTURE_PLACEHOLDER = "TEXTURE_PLACEHOLDER",
 
   // Models
+  GLB_MAP = 'GLB_MAP',
 
   // HDRs
   HDR_SKY = "HDR_SKY",
