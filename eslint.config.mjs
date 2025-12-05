@@ -1,15 +1,6 @@
 // @ts-check
-import withNuxt from './.nuxt/eslint.config.mjs';
+import withNuxt from './.nuxt/eslint.config.mjs'
 
-export default withNuxt({
-	settings: {
-		'import/resolver': {
-			alias: {
-				map: [
-					['@', './src'],
-				],
-				extensions: ['.js', '.ts', '.vue'],
-			},
-		},
-	},
-});
+export default withNuxt(
+  // Your custom configs here
+)

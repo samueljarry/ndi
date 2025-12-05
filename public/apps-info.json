@@ -1,0 +1,44 @@
+{
+	"apps": {
+		"/logo/bac_a_sable_python.svg": {
+			"name": "Bac à Sable Python",
+			"description": "Un environnement d'apprentissage interactif pour découvrir la programmation Python de manière ludique et sécurisée.",
+			"url": "https://cartographie.forge.apps.education.fr/bacasable-python/"
+		},
+		"/logo/cartes_memoire.svg": {
+			"name": "Cartes Mémoire",
+			"description": "Jouez au jeu de memory pour tester votre mémoire tout en découvrant les différentes applications NDI !",
+			"url": "https://cartographie.forge.apps.education.fr/cartesmemoire/"
+		},
+		"/logo/chatmd.svg": {
+			"name": "ChatMD",
+			"description": "Outil de dialogue axé sur la documentation médicale et les cas pratiques.",
+			"url": "https://cartographie.forge.apps.education.fr/chatmd/"
+		},
+		"/logo/codex.svg": {
+			"name": "Codex",
+			"description": "IDE léger et collaboratif pour expérimenter du code et partager des snippets.",
+			"url": "https://cartographie.forge.apps.education.fr/codex/"
+		},
+		"/logo/e-combox.svg": {
+			"name": "E-Combox",
+			"description": "Boîte à outils pour la création et la gestion de contenus multimédias éducatifs.",
+			"url": "https://cartographie.forge.apps.education.fr/e-combox/"
+		},
+		"/logo/marklab.svg": {
+			"name": "MarkLab",
+			"description": "Laboratoire d'expérimentation pour projets multimodaux et prototypage rapide.",
+			"url": "https://cartographie.forge.apps.education.fr/MarkLab/"
+		},
+		"/logo/mathalea.svg": {
+			"name": "Mathalea",
+			"description": "Une plateforme complète d'exercices de mathématiques avec corrections automatiques et progression personnalisée.",
+			"url": "https://cartographie.forge.apps.education.fr/MathAlea/"
+		},
+		"/logo/qcm_cam.svg": {
+			"name": "QCM Cam",
+			"description": "Système de questionnaires à choix multiples avec correction automatique par caméra.",
+			"url": "https://cartographie.forge.apps.education.fr/QCMcam/"
+		}
+	}
+}
