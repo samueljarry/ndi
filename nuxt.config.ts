@@ -9,6 +9,12 @@ export default defineNuxtConfig({
   css: ["~/assets/styles/main.css"],
   compatibilityDate: "2025-05-15",
 
+  runtimeConfig: {
+    public: {
+      chatApiUrl: process.env.CHAT_API_URL || 'https://amel2024test.alwaysdata.net'
+    }
+  },
+
   vite: {
     plugins: [
       tailwindcss(),

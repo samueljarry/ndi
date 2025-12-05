@@ -25,7 +25,7 @@ onMounted(() => {
 			</div>
 		</div>
 		<span class="text-white relative top-15">
-			initializing.
+			Chargement...
 		</span>
 	</div>
 </template>
