@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <View>
-    
+  <View class="flex items-center justify-center">
+    <p>JEU DU MECANO</p>
   </View>
 </template>
