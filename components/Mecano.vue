@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 
 defineProps<{ msg: string }>()
 
@@ -26,7 +25,7 @@ const squares = ref<Square[]>([
     size: 3,
     x: 0,
     y: 0,
-    imageUrl: '/images/mecano/image 27 (1).png',
+    imageUrl: '/images/mecano/image27.png',
     mustBeAt: 'zone1',
     mustBeX: 0,
     mustBeY: 0
@@ -39,7 +38,7 @@ const squares = ref<Square[]>([
     size: 3,
     x: 150,
     y: 0,
-    imageUrl: '/images/mecano/image 28 (1).png',
+    imageUrl: '/images/mecano/image28.png',
     mustBeAt: 'zone1',
     mustBeX: 150,
     mustBeY: 0
@@ -52,7 +51,7 @@ const squares = ref<Square[]>([
     size: 3,
     x: 0,
     y: 0,
-    imageUrl: '/images/mecano/image 19 (1).png',
+    imageUrl: '/images/mecano/image19.png',
     mustBeAt: 'zone4',
     mustBeX: 150,
     mustBeY: 150
@@ -65,7 +64,7 @@ const squares = ref<Square[]>([
     size: 3,
     x: 150,
     y: 0,
-    imageUrl: '/images/mecano/image 20 (1).png',
+    imageUrl: '/images/mecano/image20.png',
     mustBeAt: 'zone4',
     mustBeX: 0,
     mustBeY: 0
@@ -78,7 +77,7 @@ const squares = ref<Square[]>([
     size: 3,
     x: 0,
     y: 150,
-    imageUrl: '/images/mecano/image 21.png',
+    imageUrl: '/images/mecano/image21.png',
     mustBeAt: 'zone2',
     mustBeX: 150,
     mustBeY: 0
@@ -91,7 +90,7 @@ const squares = ref<Square[]>([
     size: 3,
     x: 0,
     y: 0,
-    imageUrl: '/images/mecano/image 30.png',
+    imageUrl: '/images/mecano/image30.png',
     mustBeAt: 'zone3',
     mustBeX: 150,
     mustBeY: 150
@@ -104,7 +103,7 @@ const squares = ref<Square[]>([
     size: 3,
     x: 150,
     y: 0,
-    imageUrl: '/images/mecano/image 27.png',
+    imageUrl: '/images/mecano/image272.png',
     mustBeAt: 'zone3',
     mustBeX: 0,
     mustBeY: 0
@@ -117,7 +116,7 @@ const squares = ref<Square[]>([
     size: 3,
     x: 0,
     y: 150,
-    imageUrl: '/images/mecano/image 28.png',
+    imageUrl: '/images/mecano/image282.png',
     mustBeAt: 'zone3',
     mustBeX: 150,
     mustBeY: 0
@@ -130,7 +129,7 @@ const squares = ref<Square[]>([
     size: 3,
     x: 150,
     y: 150,
-    imageUrl: '/images/mecano/image 29.png',
+    imageUrl: '/images/mecano/image292.png',
     mustBeAt: 'zone3',
     mustBeX: 0,
     mustBeY: 150
@@ -143,7 +142,7 @@ const squares = ref<Square[]>([
     size: 3,
     x: 150,
     y: 150,
-    imageUrl: '/images/mecano/image 25.png',
+    imageUrl: '/images/mecano/image25.png',
     mustBeAt: 'zone2',
     mustBeX: 0,
     mustBeY: 150
@@ -156,7 +155,7 @@ const squares = ref<Square[]>([
     size: 3,
     x: 0,
     y: 150,
-    imageUrl: '/images/mecano/image 29 (1).png',
+    imageUrl: '/images/mecano/image293.png',
     mustBeAt: 'zone1',
     mustBeX: 150,
     mustBeY: 150
@@ -169,7 +168,7 @@ const squares = ref<Square[]>([
     size: 3,
     x: 150,
     y: 150,
-    imageUrl: '/images/mecano/image 31.png',
+    imageUrl: '/images/mecano/image31.png',
     mustBeAt: 'zone4',
     mustBeX: 0,
     mustBeY: 150
@@ -182,7 +181,7 @@ const squares = ref<Square[]>([
     size: 3,
     x: 0,
     y: 0,
-    imageUrl: '/images/mecano/image 30 (1).png',
+    imageUrl: '/images/mecano/image302.png',
     mustBeAt: 'zone1',
     mustBeX: 0,
     mustBeY: 150
@@ -195,7 +194,7 @@ const squares = ref<Square[]>([
     size: 3,
     x: 150,
     y: 0,
-    imageUrl: '/images/mecano/image 19.png',
+    imageUrl: '/images/mecano/image192.png',
     mustBeAt: 'zone2',
     mustBeX: 0,
     mustBeY: 0
@@ -208,7 +207,7 @@ const squares = ref<Square[]>([
     size: 3,
     x: 0,
     y: 150,
-    imageUrl: '/images/mecano/image 20.png',
+    imageUrl: '/images/mecano/image202.png',
     mustBeAt: 'zone2',
     mustBeX: 150,
     mustBeY: 150
@@ -387,7 +386,7 @@ const onGameComplete = () => {
     <div style="display: flex;">
       <div class="instr-class">
         <img 
-          src="/images/mecano/Group 8.svg" 
+          src="/images/mecano/Group8.svg" 
           alt="Image"
         />
       </div>
