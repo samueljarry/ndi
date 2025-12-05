@@ -16,13 +16,13 @@
       <div class="content-top">
         <div class="character-card">
           <div class="character-image">
-            <img :src="characterImg" alt="Le boulanger">
+            <img :src="newspaperImg" alt="L'explorateur">
           </div>
         </div>
         
         <div class="info-right">
           <div class="title-section">
-            <h1>Le boulanger</h1>
+            <h1>L'explorateur</h1>
             <div class="phrase-card" id="phraseCard">
               <p>{{ currentPhrase?.text || 'Chargement...' }}</p>
             </div>
@@ -74,6 +74,7 @@ import { GameManager } from '@/managers/GameManager'
 import { onMounted, ref } from 'vue'
 
 const characterImg = new URL('../public/persostratege.png', import.meta.url).href
+const newspaperImg = new URL('../public/persojalon.png', import.meta.url).href
 
 interface Phrase {
   text: string
@@ -193,7 +194,7 @@ onMounted(() => {
 <style scoped>
 @font-face {
   font-family: 'Gensco';
-  src: url('@/assets/gensco-webfont/GENSCO.woff') format('woff');
+  src: url('/gensco-webfont/GENSCO.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -211,7 +212,7 @@ onMounted(() => {
   min-height: 100vh;
   width: 100%;
   justify-content: space-between;
-  background-image: url('/bgchambre.png');
+  background-image: url('/bgstratege.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

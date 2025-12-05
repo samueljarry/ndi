@@ -18,4 +18,5 @@ export enum ViewId {
   JARDINIER_GAME = 'JARDINIER_GAME',
   MECANO_GAME = 'MECANO_GAME',
   ROBOT_A_I = 'ROBOT_A_I',
+  SNAKE = 'SNAKE',
 }

@@ -1,10 +1,9 @@
 <script setup lang="ts">
-
-
+  
 </script>
 
 <template>
   <View>
-    <Mecano  />
+    <Snake />
   </View>
 </template>

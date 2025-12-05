@@ -12,7 +12,7 @@ export class GameManager {
 
   public static OnShow = new Action();
   public static OnHide = new Action();
-  
+
   public static Show(pnjData: PNJData) {
     this._Camera = CamerasManager.Get<MapCameraController>(CamerasId.MAP);
     this._Camera.removeListeners();
@@ -23,10 +23,23 @@ export class GameManager {
     console.log('show pd')
   }
 
+  public static ShowSnake() {
+    this._Camera = CamerasManager.Get<MapCameraController>(CamerasId.MAP);
+    this._Camera.removeListeners();
+    ViewsManager.Show(ViewId.SNAKE);
+    this.OnShow.execute();
+  }
+
+  public static HideSnake() {
+    this._Camera = CamerasManager.Get<MapCameraController>(CamerasId.MAP);
+    this._Camera.addListeners();
+    ViewsManager.Hide(ViewId.SNAKE);
+    this.OnHide.execute();
+  }
+
   public static Hide() {
     this._Camera.addListeners();
     ViewsManager.Hide(ViewId.HOUSE_DIALOG);
-    console.log(this._CurrentData.viewId)
     ViewsManager.Hide(this._CurrentData.viewId);
 
     this.OnHide.execute();

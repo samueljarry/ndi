@@ -105,7 +105,7 @@ export class Map3D extends ExtendedObject3D {
   };
 
   private _onSnakeClick = () => {
-    console.log("CLICK Snake");
+    GameManager.ShowSnake();
   };
 
   private _handleGameStart = () => {
