@@ -23,51 +23,12 @@ export class DemoScene extends ThreeScene {
     this._fog = new Fog(new Color(0x6f6f6f).convertLinearToSRGB(), 10, 100);
     Three.Scene.fog = this._fog;
 
-    // Tweakpane
-    this._pane = new Pane({ title: "Fog Settings" });
-
     const fogParams = {
       color: { r: 1, g: 1, b: 1 },
       near: 17,
       far: 80,
       enabled: true,
     };
-
-    this._pane.addBinding(fogParams, "enabled").on("change", (ev) => {
-      if (ev.value) {
-        Three.Scene.fog = this._fog;
-      } else {
-        Three.Scene.fog = null;
-      }
-    });
-
-    this._pane
-      .addBinding(fogParams, "color", {
-        color: { type: "float" },
-      })
-      .on("change", (ev) => {
-        this._fog.color.setRGB(ev.value.r, ev.value.g, ev.value.b);
-      });
-
-    this._pane
-      .addBinding(fogParams, "near", {
-        min: 0,
-        max: 200,
-        step: 1,
-      })
-      .on("change", (ev) => {
-        this._fog.near = ev.value;
-      });
-
-    this._pane
-      .addBinding(fogParams, "far", {
-        min: 0,
-        max: 500,
-        step: 1,
-      })
-      .on("change", (ev) => {
-        this._fog.far = ev.value;
-      });
 
     // this._views.add(ViewId.DIALOG_MODAL);
     this._views.add(ViewId.MAP);
