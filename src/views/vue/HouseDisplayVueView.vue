@@ -2,12 +2,15 @@
 import type { MapCameraController } from '@/controllers/cameras/MapCameraController';
 import { CamerasId } from '@/core/three/constants/CamerasId';
 import { CamerasManager } from '@/core/three/managers/CamerasManager';
-import { PNJDatas } from '../../constants/PNJConstants';
+import { GameManager } from '@/managers/GameManager';
+import { PNJDatas, PNJHouseIndices } from '../../constants/PNJConstants';
 
 const camera = ref<MapCameraController>(CamerasManager.Get<MapCameraController>(CamerasId.MAP));
 const name = ref<string>();
 const prevName = ref<string>();
 const animKey = ref(0);
+
+const ctaVisible = ref(true);
 
 onMounted(() => {
   const updateName = () => {
@@ -18,11 +21,21 @@ onMounted(() => {
 
   camera.value.onFocusedHouseChange.add(updateName);
   name.value = PNJDatas[camera.value.currentHousePNJ].house;
+
+  GameManager.OnShow.add(() => ctaVisible.value = false);
+  GameManager.OnHide.add(() => ctaVisible.value = true);
   
   onUnmounted(() => {
     camera.value.onFocusedHouseChange?.remove(updateName);
   });
 });
+
+const click = () => {
+  const pnjId = PNJHouseIndices[camera.value.pnjHouseId];
+  const data = PNJDatas[pnjId];
+  
+  GameManager.Show(data);
+}
 </script>
 
 <template>
@@ -35,5 +48,9 @@ onMounted(() => {
         {{ name }}
       </h1>
     </div>
+
+    <button class="w-1/5 absolute bottom-40" v-if="ctaVisible" @click="click">
+      <img class="w-full" src="/images/cta/toquer.svg" draggable="false" />
+    </button>
   </View>
 </template>
