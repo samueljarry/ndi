@@ -65,7 +65,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const characterImg = new URL('../public/persostratege.png', import.meta.url).href
 const newspaperImg = new URL('../public/persojalon.png', import.meta.url).href
@@ -184,7 +184,7 @@ onMounted(() => {
 <style scoped>
 @font-face {
   font-family: 'Gensco';
-  src: url('@/assets/gensco-webfont/GENSCO.woff') format('woff');
+  src: url('/assets/gensco-webfont/GENSCO.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
