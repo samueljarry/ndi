@@ -33,14 +33,14 @@
 				placeholder="Écrire un message..."
 			/>
 			<button type="submit" :disabled="loading || !input">Envoyer</button>
-			<button type="button" @click="newChat" class="new-chat-btn">Nouveau chat</button>
+			<!-- <button type="button" @click="newChat" class="new-chat-btn">Nouveau chat</button> -->
 		</form>
 		<div v-if="loading" class="loading">En cours...</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, nextTick, onBeforeUnmount, computed } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useChat } from '~/composables/useChat'
 
 const { messages, loading, sendMessage, newChat } = useChat()

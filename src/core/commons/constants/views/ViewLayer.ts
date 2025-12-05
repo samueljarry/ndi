@@ -3,5 +3,9 @@ export enum ViewLayer {
   MAIN_THREE = 0, 
   MAIN = 1,
   
-  UI_1 
+  UI_1,
+  UI_2,
+  UI_3,
+
+  GAME,
 }
