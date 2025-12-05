@@ -29,7 +29,7 @@ export class Ticker {
       this._Stats = new Stats();
     }
 
-    document.body.appendChild(this._Stats.dom);
+    //document.body.appendChild(this._Stats.dom);
     this._StatsEnabled = true;
   }
 

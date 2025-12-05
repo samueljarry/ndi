@@ -1,4 +1,12 @@
 <template>
+
+    <img 
+      v-if="showEnd"
+      src="/images/chef/EndChef.png" 
+      alt="Background" 
+      style="position: fixed; width: 100vw; height: auto; top: -17%; left: 0; z-index: 35;"
+    />
+
   <div class="stratege-wrapper">
     <div class="left-panel">
       <div class="puzzle-instructions">
@@ -140,9 +148,14 @@ function closeModal() {
   displayNewPhrase()
 }
 
+const showEnd = ref(false);
+
 function handleGameComplete() {
-  GameManager.Hide()
-  // resetGame()
+  showEnd.value = true
+  setTimeout(() => {
+    showEnd.value = false
+    GameManager.Hide();
+  }, 3000);
 }
 
 function checkAnswer(selectedJalon: number) {
