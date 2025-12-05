@@ -42,6 +42,8 @@ export class DemoScene extends ThreeScene {
     this._linkedViews.add(ViewId.MECANO_GAME);
     this._linkedViews.add(ViewId.ROBOT_A_I);
     this._linkedViews.add(ViewId.SNAKE);
+  
+    this._views.add(ViewId.INTRO_VIDEO)
   }
 
   public override init(): void {

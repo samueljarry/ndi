@@ -1,3 +1,4 @@
+import IntroVideoVueView from '@/views/vue/IntroVideoVueView.vue'
 import { MapCameraController } from '@/controllers/cameras/MapCameraController'
 import { InitCommand } from "@/core/commons/commands/InitCommand"
 import { AssetsId } from '@/core/commons/constants/AssetsId'
@@ -68,6 +69,7 @@ export class GlobalInitCommand extends InitCommand {
     ViewsManager.CreateVueView(ViewId.MECANO_GAME, MecanoGameVueView, ViewLayer.GAME);
     ViewsManager.CreateVueView(ViewId.ROBOT_A_I, RobotAIVueView, ViewLayer.GAME);
     ViewsManager.CreateVueView(ViewId.SNAKE, SnakeVueView, ViewLayer.GAME);
+    ViewsManager.CreateVueView(ViewId.INTRO_VIDEO, IntroVideoVueView, ViewLayer.GAME);
   }
   
   public override initScenes() {
