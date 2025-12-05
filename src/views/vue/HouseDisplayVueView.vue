@@ -49,7 +49,7 @@ const click = () => {
       </h1>
     </div>
 
-    <button class="w-1/5 absolute bottom-40" v-if="ctaVisible" @click="click">
+    <button class="w-1/5 absolute bottom-40 pointer-events-auto cursor-pointer" v-if="ctaVisible" @click="click">
       <img class="w-full" src="/images/cta/toquer.svg" draggable="false" />
     </button>
   </View>
