@@ -26,9 +26,9 @@ export class MainPostProcessingPass extends ExtendedEffectPass {
     const tiltShiftEffect = new TiltShiftEffect({
       blendFunction: BlendFunction.NORMAL,
       offset: 0.09,
-      rotation: 0,
+      rotation: 3.75,
       focusArea: 1,
-      feather: 0.6,
+      feather: 0.5,
       bias: 0,
       resolutionScale: 1,
       kernelSize: KernelSize.LARGE,
@@ -37,7 +37,7 @@ export class MainPostProcessingPass extends ExtendedEffectPass {
     super(
       CamerasManager.Get(CamerasId.MAP).camera,
       bloomEffect,
-      // tiltShiftEffect
+      tiltShiftEffect
     );
 
     this._bloomEffect = bloomEffect;
