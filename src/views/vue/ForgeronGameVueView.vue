@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  onMounted(() => console.log('fdp ntm'))
 </script>
 
 <template>
