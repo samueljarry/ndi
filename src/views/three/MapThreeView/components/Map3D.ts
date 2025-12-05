@@ -67,11 +67,22 @@ export class Map3D extends ExtendedObject3D {
     this._raycaster.onClick.add(this._handleClick);
     this._raycaster.onMouseEnter.add(this._onMouseEnter);
     this._raycaster.onMouseLeave.add(this._onMouseLeave);
+
+    GameManager.OnShow.add(this._handleGameStart);
+    GameManager.OnHide.add(this._handleGameEnd);
   }
+
+  private _handleGameStart = () => {
+    this._raycaster.stop();
+  };
+
+  private _handleGameEnd = () => {
+    this._raycaster.start();
+  };
 
   private _onMouseEnter = (intersection: Intersection) => {
     document.body.style.cursor = "pointer";
-    intersection.object.userData.id
+    intersection.object.userData.id;
   };
 
   private _onMouseLeave = () => {
@@ -81,6 +92,9 @@ export class Map3D extends ExtendedObject3D {
   public override reset(): void {
     super.reset();
     this._raycaster.stop();
+
+    GameManager.OnShow.remove(this._handleGameStart);
+    GameManager.OnHide.remove(this._handleGameEnd);
   }
 
   private _handleClick = (intersection: Intersection) => {
