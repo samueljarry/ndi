@@ -40,8 +40,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <View class="cursor-pointer" v-if="currentDatas.dialogs && currentDatas.dialogs.length > 0">
-    <div class="w-full h-fit absolute bottom-0 left-0 flex justify-center items-end" @click="nextDialog">
+  <View @click="nextDialog" class="cursor-pointer" v-if="currentDatas.dialogs && currentDatas.dialogs.length > 0">
+    <div class="w-full h-fit absolute bottom-0 left-0 flex justify-center items-end">
       <div class="w-1/5 z-10 translate-x-1/3 h-fit">
         <img 
           draggable="false"
@@ -49,7 +49,7 @@ onUnmounted(() => {
           :src="currentDatas.character"
         />
       </div>
-      <div class="w-3/6 -translate-y-1/3 relative cursor-pointer" @click="nextDialog">
+      <div class="w-3/6 -translate-y-1/3 relative cursor-pointer">
         <img 
           draggable="false"
           class="w-full select-none"

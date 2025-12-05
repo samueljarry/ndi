@@ -44,76 +44,76 @@ export class MainPostProcessingPass extends ExtendedEffectPass {
     this._tiltShiftEffect = tiltShiftEffect;
 
     // Tweakpane
-    this._pane = new Pane({ title: "Post Processing" });
+    // this._pane = new Pane({ title: "Post Processing" });
 
-    // Tilt Shift folder
-    const tiltShiftFolder = this._pane.addFolder({ title: "Tilt Shift" });
-    tiltShiftFolder.addBinding(this._tiltShiftEffect, "offset", {
-      min: -1,
-      max: 1,
-      step: 0.01,
-    });
-    tiltShiftFolder.addBinding(this._tiltShiftEffect, "rotation", {
-      min: 0,
-      max: Math.PI * 2,
-      step: 0.01,
-    });
-    tiltShiftFolder.addBinding(this._tiltShiftEffect, "focusArea", {
-      min: 0,
-      max: 1,
-      step: 0.01,
-    });
-    tiltShiftFolder.addBinding(this._tiltShiftEffect, "feather", {
-      min: 0,
-      max: 1,
-      step: 0.01,
-    });
+    // // Tilt Shift folder
+    // const tiltShiftFolder = this._pane.addFolder({ title: "Tilt Shift" });
+    // tiltShiftFolder.addBinding(this._tiltShiftEffect, "offset", {
+    //   min: -1,
+    //   max: 1,
+    //   step: 0.01,
+    // });
+    // tiltShiftFolder.addBinding(this._tiltShiftEffect, "rotation", {
+    //   min: 0,
+    //   max: Math.PI * 2,
+    //   step: 0.01,
+    // });
+    // tiltShiftFolder.addBinding(this._tiltShiftEffect, "focusArea", {
+    //   min: 0,
+    //   max: 1,
+    //   step: 0.01,
+    // });
+    // tiltShiftFolder.addBinding(this._tiltShiftEffect, "feather", {
+    //   min: 0,
+    //   max: 1,
+    //   step: 0.01,
+    // });
 
-    const tiltShiftParams = {
-      kernelSize: "LARGE",
-      blendFunction: "NORMAL",
-    };
+    // const tiltShiftParams = {
+    //   kernelSize: "LARGE",
+    //   blendFunction: "NORMAL",
+    // };
 
-    tiltShiftFolder
-      .addBinding(tiltShiftParams, "kernelSize", {
-        options: {
-          VERY_SMALL: "VERY_SMALL",
-          SMALL: "SMALL",
-          MEDIUM: "MEDIUM",
-          LARGE: "LARGE",
-          VERY_LARGE: "VERY_LARGE",
-          HUGE: "HUGE",
-        },
-      })
+    // tiltShiftFolder
+    //   .addBinding(tiltShiftParams, "kernelSize", {
+    //     options: {
+    //       VERY_SMALL: "VERY_SMALL",
+    //       SMALL: "SMALL",
+    //       MEDIUM: "MEDIUM",
+    //       LARGE: "LARGE",
+    //       VERY_LARGE: "VERY_LARGE",
+    //       HUGE: "HUGE",
+    //     },
+    //   })
       
 
-    tiltShiftFolder
-      .addBinding(tiltShiftParams, "blendFunction", {
-        options: {
-          SKIP: "SKIP",
-          ADD: "ADD",
-          ALPHA: "ALPHA",
-          AVERAGE: "AVERAGE",
-          COLOR_BURN: "COLOR_BURN",
-          COLOR_DODGE: "COLOR_DODGE",
-          DARKEN: "DARKEN",
-          DIFFERENCE: "DIFFERENCE",
-          EXCLUSION: "EXCLUSION",
-          LIGHTEN: "LIGHTEN",
-          MULTIPLY: "MULTIPLY",
-          DIVIDE: "DIVIDE",
-          NEGATION: "NEGATION",
-          NORMAL: "NORMAL",
-          OVERLAY: "OVERLAY",
-          REFLECT: "REFLECT",
-          SCREEN: "SCREEN",
-          SOFT_LIGHT: "SOFT_LIGHT",
-          SUBTRACT: "SUBTRACT",
-        },
-      })
-      .on("change", (ev) => {
-        this._tiltShiftEffect.blendMode.blendFunction =
-          BlendFunction[ev.value as keyof typeof BlendFunction];
-      });
+    // tiltShiftFolder
+    //   .addBinding(tiltShiftParams, "blendFunction", {
+    //     options: {
+    //       SKIP: "SKIP",
+    //       ADD: "ADD",
+    //       ALPHA: "ALPHA",
+    //       AVERAGE: "AVERAGE",
+    //       COLOR_BURN: "COLOR_BURN",
+    //       COLOR_DODGE: "COLOR_DODGE",
+    //       DARKEN: "DARKEN",
+    //       DIFFERENCE: "DIFFERENCE",
+    //       EXCLUSION: "EXCLUSION",
+    //       LIGHTEN: "LIGHTEN",
+    //       MULTIPLY: "MULTIPLY",
+    //       DIVIDE: "DIVIDE",
+    //       NEGATION: "NEGATION",
+    //       NORMAL: "NORMAL",
+    //       OVERLAY: "OVERLAY",
+    //       REFLECT: "REFLECT",
+    //       SCREEN: "SCREEN",
+    //       SOFT_LIGHT: "SOFT_LIGHT",
+    //       SUBTRACT: "SUBTRACT",
+    //     },
+    //   })
+    //   .on("change", (ev) => {
+    //     this._tiltShiftEffect.blendMode.blendFunction =
+    //       BlendFunction[ev.value as keyof typeof BlendFunction];
+    //   });
   }
 }
