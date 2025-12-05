@@ -20,6 +20,7 @@ export class GameManager {
     ViewsManager.Show(ViewId.HOUSE_DIALOG);
 
     this.OnShow.execute();
+    console.log('show pd')
   }
 
   public static Hide() {
@@ -28,6 +29,7 @@ export class GameManager {
     ViewsManager.Hide(this._CurrentData.viewId);
 
     this.OnHide.execute();
+    console.log('hide pd')
   }
 
   public static get CurrentData() {
