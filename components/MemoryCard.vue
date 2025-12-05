@@ -1,5 +1,6 @@
 <template>
 	<div
+		v-if="card"
 		class="memory-card"
 		:class="{ flipped: isFlipped || isMatched, matched: isMatched }"
 	>
@@ -9,8 +10,8 @@
 			</div>
 			<div class="card-back">
 				<img
-					:src="card.value"
-					:alt="`Card ${card.id}`"
+					:src="card.value || ''"
+					:alt="cardAlt"
 					class="card-image"
 				>
 			</div>
@@ -27,12 +28,13 @@ interface Card {
 }
 
 interface Props {
-	card: Card;
+	card?: Card;
 	isFlipped: boolean;
 	isMatched: boolean;
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
+const cardAlt = computed(() => (props.card ? `Card ${props.card.id}` : 'Card'));
 </script>
 
 <style scoped>
