@@ -5,7 +5,7 @@ import { ViewsManager } from "@/core/commons/managers/ViewsManager";
 import { CamerasId } from "@/core/three/constants/CamerasId";
 import { CamerasManager } from "@/core/three/managers/CamerasManager";
 
-export class HouseDialogManager {
+export class GameManager {
   private static _CurrentData: PNJData;
   private static _Camera: MapCameraController;
   
@@ -19,6 +19,7 @@ export class HouseDialogManager {
   public static Hide() {
     this._Camera.addListeners();
     ViewsManager.Hide(ViewId.HOUSE_DIALOG);
+    ViewsManager.Hide(this._CurrentData.viewId);
   }
 
   public static get CurrentData() {

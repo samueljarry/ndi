@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ViewsManager } from '@/core/commons/managers/ViewsManager';
-import { HouseDialogManager } from '@/managers/HouseDialogManager';
+import { GameManager } from '@/managers/HouseDialogManager';
 import { onMounted, onUnmounted } from 'vue';
 
-const currentDatas = ref(HouseDialogManager.CurrentData);
+const currentDatas = ref(GameManager.CurrentData);
 const currentDialogIndex = ref(0);
 
 const nextDialog = () => {

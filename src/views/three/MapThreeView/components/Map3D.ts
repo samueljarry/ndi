@@ -3,7 +3,7 @@ import { AssetsId } from "@/core/commons/constants/AssetsId";
 import { ExtendedObject3D } from "@/core/three/components/ExtendedObject3D";
 import type { GLB } from "@/core/three/loaders/GLBLoader";
 import { ThreeAssetsManager } from "@/core/three/managers/ThreeAssetsManager";
-import { HouseDialogManager } from "@/managers/HouseDialogManager";
+import { GameManager } from "@/managers/HouseDialogManager";
 import { Object3DProxy } from "@/proxies/Object3DProxy";
 import { RaycastHandler } from "@/utils/RaycastHandler";
 import { BoxGeometry, Mesh, MeshBasicMaterial, type Intersection, type Scene } from "three";
@@ -87,6 +87,6 @@ export class Map3D extends ExtendedObject3D {
     const id = intersection.object.userData.id;
     const pnjId = PNJHouseIndices[id];
 
-    HouseDialogManager.Show(PNJDatas[pnjId]);
+    GameManager.Show(PNJDatas[pnjId]);
   };
 }
